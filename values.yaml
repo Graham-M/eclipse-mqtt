@@ -9,6 +9,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+annotations: {}
 
 serviceAccount:
   # Specifies whether a service account should be created

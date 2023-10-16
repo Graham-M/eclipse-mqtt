@@ -17,6 +17,11 @@ spec:
       {{- if and .Values.authentication.passwordEntries .Values.authentication.passwordFilePath }}
         checksum/secret: {{ include (print .Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
       {{- end }}
+      {{- with .Values.service.annotations }}
+        {{- range $key, $value := . }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
+      {{- end }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
